@@ -1,5 +1,6 @@
 class Brush{
 
+  float radius;
   PVector pos, vel, acc;
   float max_vel = 2.5;
   float lifespan;
@@ -7,13 +8,13 @@ class Brush{
   color col;
   ArrayList<PVector> pos_history = new ArrayList<PVector>();
 
-  Brush(PVector pos, float lifespan, color col){
+  Brush(PVector pos, float radius, float lifespan){
     this.pos= pos.copy();
     this.vel = new PVector();
     this.acc = new PVector();
     this.lifespan=lifespan;
     this.current_lifespan = lifespan;
-    this.col = col;
+    this.radius = radius;
   }
 
   void update(){
@@ -33,15 +34,12 @@ class Brush{
   float getLifePercent(){
     return (this.lifespan - this.current_lifespan) / this.lifespan;
   }
-  color getImgColor(PVector pos){
-    return img_cover.get(int(pos.x/size*img_cover.width), int(pos.y/size*img_cover.height));
-  }
   
   void draw(){
     
     for(int i=this.pos_history.size()-1; i>=0; i--){
       PVector pos = this.pos_history.get(i);
-      color col = getImgColor(pos);
+      color col = imgManager.getColor(pos);
       
       float alpha;
       float percentage = getLifePercent();
@@ -56,7 +54,7 @@ class Brush{
      
       noStroke();
       fill(col, alpha * (float)i / this.pos_history.size());
-      ellipse(pos.x, pos.y, map(mouseX, 0, width, 2, 30), map(mouseY, 0, height, 2, 30));
+      ellipse(pos.x, pos.y, map(mouseX, 0, width, 2, this.radius*10), map(mouseY, 0, height, 2, this.radius*10));
       
     }
   }

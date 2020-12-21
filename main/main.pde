@@ -1,26 +1,41 @@
-int size = 700;
-int frame_rate = 30;
+import oscP5.*;
+import netP5.*;
+
+OscP5 oscP5;
+int size = 600;
+int frameRate = 60;
 
 
-PImage img_cover;
-BrushSystem brush_system;
+BrushSystem brushSystem;
+ImgManager imgManager;
+FeatureManager featureManager;
 
 void setup() {
-  size(700, 700);
-  frameRate(frame_rate);
+  size(600, 600);
+  frameRate(frameRate);
+  oscP5 = new OscP5(this,9999);
+  imgManager = new ImgManager();
+  featureManager = new FeatureManager();
+  brushSystem = new BrushSystem();
   
-  img_cover = loadImage("cover2.jpg");
   imageMode(CENTER);
   noStroke();
   background(0);
-  
-  brush_system = new BrushSystem();
   colorMode(HSB, 1);
-  
 }
 
 void draw() {
-  image(img_cover, size/2, size/2, size, size);
-  brush_system.update();
-  brush_system.draw();
+  imgManager.draw();
+  brushSystem.update();
+  brushSystem.draw();
+}
+
+
+
+void oscEvent(OscMessage message) {
+  if(message.checkAddrPattern("/featureUpdate") == true) {
+    float feat = message.get(0).floatValue();
+    featureManager.energy = feat;
+    return;
+  }
 }
