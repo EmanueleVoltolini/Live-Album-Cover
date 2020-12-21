@@ -6,6 +6,13 @@ import IPython.display as ipd
 import matplotlib.pyplot as plt
 import os
 
+import argparse
+import random
+import time
+
+from pythonosc import udp_client
+
+
 import DEF_features
 #%%
 #ZCR
@@ -25,11 +32,11 @@ def compute_zcr(win, Fs):
 #SPECTRAL CENTROID
 def compute_speccentr(spec):
     k_axis = np.arange(1, spec.shape[0] + 1)
-    centr = np.sum(np.transpose(k_axis) * np.abs(spec)) / np.sum(np.abs(spec))
+    centr = np.sum(np.transpose(k_axis) * np.abs(spec)) / (np.sum(np.abs(spec))+np.finfo(np.float32).eps)
     return centr
 
 def compute_specdec(spec):
-    mul_fact  = 1 / np.sum(np.abs(spec[1:]))
+    mul_fact  = 1 / (np.sum(np.abs(spec[1:]))+np.finfo(np.float32).eps)
     num = np.abs(spec[1:]) - np.tile(np.abs(spec[0]), len(spec) - 1)
     den = np.arange(1, len(spec))
     spectral_decrease = mul_fact * np.sum(num / den)
@@ -145,7 +152,7 @@ print(bpm)
 
 #%%
 ###################################### Plot the selected signal and features
-plt.figure(figsize=(16, 8))
+plt.figure(1, figsize=(16, 8))
 
 plt.subplot(n_features+1,1,1)
 time_axis = np.arange(audio.shape[0]) / Fs
@@ -184,14 +191,15 @@ plt.title(features_names[4])
 plt.plot(feat_time_axis, features[:, 4])
 plt.grid(True);
 
+
 #See if beats are correct
-plt.figure(figsize=(16, 8))
+plt.figure(2, figsize=(16, 8))
 plt.plot(t, audio, label="y")
 plt.scatter(t[sample_beats], audio[sample_beats], label="beats", color="red")
 plt.xlim([0, 5])
 plt.xlabel("Time [s]")
 plt.legend()
-plt.show()
+
 
 #%%
 ###################################### Smoothing process
@@ -203,7 +211,7 @@ for i in range(win_number-1):
     features_s[i+1][a]=smooth_factor*features_s[i+1][a]+(1-smooth_factor)*features_s[i][a]
 features_s.shape
 
-plt.figure(figsize=(16, 8))
+plt.figure(3, figsize=(16, 8))
 
 plt.subplot(n_features+1,1,1)
 time_axis = np.arange(audio.shape[0]) / Fs
@@ -241,6 +249,7 @@ feat_time_axis = np.arange(features_s.shape[0]) * hop_size / Fs
 plt.title(features_names[4])
 plt.plot(feat_time_axis, features_s[:, 4])
 plt.grid(True);
+plt.show()
 
 #%%
 ###################################### Mean, Max, min evaluation
@@ -250,3 +259,17 @@ features_min = np.min(features, 0)
 print(features_mean)
 print(features_Max)
 print(features_min)
+# %%
+if __name__ == "__main__":
+  parser = argparse.ArgumentParser()
+  parser.add_argument("--ip", default="127.0.0.1",
+      help="The ip of the OSC server")
+  parser.add_argument("--port", type=int, default=5005,
+      help="The port the OSC server is listening on")
+  args = parser.parse_args()
+
+  client = udp_client.SimpleUDPClient(args.ip, args.port)
+
+  for x in range(10):
+    client.send_message("/filter", random.random())
+    time.sleep(1)
