@@ -14,5 +14,5 @@
 #my_workspace.code-workspace
 #*.code-workspace
 CPACproject/*
-_pycache_/*
+_pycache_/
 data/*
