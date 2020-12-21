@@ -25,7 +25,7 @@ void setup() {
 }
 
 void draw() {
-  imgManager.draw();
+  imgManager.drawCover();
   brushSystem.update();
   brushSystem.draw();
 }

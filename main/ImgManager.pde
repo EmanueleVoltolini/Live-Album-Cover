@@ -5,11 +5,11 @@ class ImgManager {
     img_cover = loadImage("cover2.jpg");
   }
   
-  color getColor(PVector pos){
+  color getCoverPxColor(PVector pos){
    return img_cover.get(int(pos.x/size*img_cover.width), int(pos.y/size*img_cover.height));
   }
   
-  void draw(){
+  void drawCover(){
     
     //image colors modifications
     

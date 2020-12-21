@@ -39,7 +39,7 @@ class Brush{
     
     for(int i=this.pos_history.size()-1; i>=0; i--){
       PVector pos = this.pos_history.get(i);
-      color col = imgManager.getColor(pos);
+      color col = imgManager.getCoverPxColor(pos);
       
       float alpha;
       float percentage = getLifePercent();
