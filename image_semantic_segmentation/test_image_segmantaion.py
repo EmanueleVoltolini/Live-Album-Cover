@@ -6,7 +6,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import cv2
-import tensorflow.keras
 from keras_segmentation.pretrained  import pspnet_50_ADE_20K , pspnet_101_cityscapes, pspnet_101_voc12
 
 model = pspnet_50_ADE_20K() # load the pretrained model trained on ADE20k dataset
@@ -20,7 +19,7 @@ model2 = pspnet_101_voc12() # load the pretrained model trained on Pascal VOC 20
 
 out = model.predict_segmentation(
     inp="image_semantic_segmentation/image/Ripe.jpg",
-    out_fname="out.png"
+    out_fname="image_semantic_segmentation/image/out.png"
 )
 img = mpimg.imread('image_semantic_segmentation/image/Ripe.jpg')
 
@@ -29,10 +28,11 @@ plt.subplot(1,2,1)
 imgplot = plt.imshow(img)
 plt.subplot(1,2,2)
 imgplot = plt.imshow(out)
+plt.show()
 
 out2 = model.predict_segmentation(
     inp="image_semantic_segmentation/image/Dark_side_of_the_moon.jpg",
-    out_fname="out.png"
+    out_fname="image_semantic_segmentation/image/out.png"
 )
 img2 = mpimg.imread('image_semantic_segmentation/image/Dark_side_of_the_moon.jpg')
 
@@ -41,10 +41,11 @@ plt.subplot(1,2,1)
 imgplot = plt.imshow(img2)
 plt.subplot(1,2,2)
 imgplot = plt.imshow(out2)
+plt.show()
 
 out3 = model.predict_segmentation(
     inp ="image_semantic_segmentation/image/Nirvana_Nevermind.jpg",
-    out_fname="out.png"
+    out_fname="image_semantic_segmentation/image/out.png"
 )
 img3 = mpimg.imread('image_semantic_segmentation/image/Nirvana_Nevermind.jpg')
 
@@ -53,10 +54,11 @@ plt.subplot(1,2,1)
 imgplot = plt.imshow(img3)
 plt.subplot(1,2,2)
 imgplot = plt.imshow(out3)
+plt.show()
 
 out4 = model.predict_segmentation(
     inp="image_semantic_segmentation/image/Sonic-Highways.jpg",
-    out_fname="out.png"
+    out_fname="image_semantic_segmentation/image/out.png"
 )
 img4 = mpimg.imread('image_semantic_segmentation/image/Sonic-Highways.jpg')
 
@@ -65,6 +67,7 @@ plt.subplot(1,2,1)
 imgplot = plt.imshow(img4)
 plt.subplot(1,2,2)
 imgplot = plt.imshow(out4)
+plt.show()
 
 out.shape
 
@@ -82,13 +85,14 @@ dim = (width, height)
 res = cv2.resize(img, dim, interpolation=cv2.INTER_LINEAR)
 out_res = model.predict_segmentation(
     inp=res,
-    out_fname="out.png"
+    out_fname="image_semantic_segmentation/image/out.png"
 )
 plt.figure(figsize=(15,6))
 plt.subplot(1,2,1)
 imgplot = plt.imshow(res)
 plt.subplot(1,2,2)
 imgplot = plt.imshow(out_res)
+plt.show()
 
 # setting dim of the resize
 height = 600
@@ -97,13 +101,14 @@ dim = (width, height)
 res1 = cv2.resize(img2, dim, interpolation=cv2.INTER_LINEAR)
 out_res1 = model.predict_segmentation(
   inp=res1,
-  out_fname="out.png"
+  out_fname="image_semantic_segmentation/image/out.png"
 )
 plt.figure(figsize=(15,6))
 plt.subplot(1,2,1)
 imgplot = plt.imshow(res1)
 plt.subplot(1,2,2)
 imgplot = plt.imshow(out_res1)
+plt.show()
 
 # setting dim of the resize
 height = 600
@@ -112,13 +117,14 @@ dim = (width, height)
 res2 = cv2.resize(img3, dim, interpolation=cv2.INTER_LINEAR)
 out_res2 = model.predict_segmentation(
   inp=res2,
-  out_fname="out.png"
+  out_fname="image_semantic_segmentation/image/out.png"
 )
 plt.figure(figsize=(15,6))
 plt.subplot(1,2,1)
 imgplot = plt.imshow(res2)
 plt.subplot(1,2,2)
 imgplot = plt.imshow(out_res2)
+plt.show()
 
 # setting dim of the resize
 height = 600
@@ -127,13 +133,14 @@ dim = (width, height)
 res3 = cv2.resize(img4, dim, interpolation=cv2.INTER_LINEAR)
 out_res3 = model.predict_segmentation(
   inp=res3,
-  out_fname="out.png"
+  out_fname="image_semantic_segmentation/image/out.png"
 )
 plt.figure(figsize=(15,6))
 plt.subplot(1,2,1)
 imgplot = plt.imshow(res3)
 plt.subplot(1,2,2)
 imgplot = plt.imshow(out_res3)
+plt.show()
 
 #########################################Denoise#####################################################
 
@@ -147,39 +154,43 @@ plt.subplot(1,2,1)
 imgplot = plt.imshow(blur)
 plt.subplot(1,2,2)
 imgplot = plt.imshow(out_blur)
+plt.show()
 
 blur1 = cv2.GaussianBlur(res1, (5, 5), 0)
 out_blur1 = model.predict_segmentation(
     inp=blur1,
-    out_fname="out.png"
+    out_fname="image_semantic_segmentation/image/out.png"
 )
 plt.figure(figsize=(15,6))
 plt.subplot(1,2,1)
 imgplot = plt.imshow(blur1)
 plt.subplot(1,2,2)
 imgplot = plt.imshow(out_blur1)
+plt.show()
 
 blur2 = cv2.GaussianBlur(res2, (5, 5), 0)
 out_blur2 = model.predict_segmentation(
     inp=blur2,
-    out_fname="out.png"
+    out_fname="image_semantic_segmentation/image/out.png"
 )
 plt.figure(figsize=(15,6))
 plt.subplot(1,2,1)
 imgplot = plt.imshow(blur2)
 plt.subplot(1,2,2)
 imgplot = plt.imshow(out_blur2)
+plt.show()
 
 blur3 = cv2.GaussianBlur(res3, (5, 5), 0)
 out_blur3 = model.predict_segmentation(
     inp=blur3,
-    out_fname="out.png"
+    out_fname="image_semantic_segmentation/image/out.png"
 )
 plt.figure(figsize=(15,6))
 plt.subplot(1,2,1)
 imgplot = plt.imshow(blur3)
 plt.subplot(1,2,2)
 imgplot = plt.imshow(out_blur3)
+plt.show()
 
 ###########################################Different results#######################################
 
@@ -192,6 +203,7 @@ plt.subplot(2,2,3)
 imgplot = plt.imshow(out_res)
 plt.subplot(2,2,4)
 imgplot = plt.imshow(out_blur)
+plt.show()
 
 plt.figure(figsize=(20,15))
 plt.subplot(2,2,1)
@@ -202,6 +214,7 @@ plt.subplot(2,2,3)
 imgplot = plt.imshow(out_res1)
 plt.subplot(2,2,4)
 imgplot = plt.imshow(out_blur1)
+plt.show()
 
 plt.figure(figsize=(20,15))
 plt.subplot(2,2,1)
@@ -212,6 +225,7 @@ plt.subplot(2,2,3)
 imgplot = plt.imshow(out_res2)
 plt.subplot(2,2,4)
 imgplot = plt.imshow(out_blur2)
+plt.show()
 
 plt.figure(figsize=(20,15))
 plt.subplot(2,2,1)
@@ -222,3 +236,4 @@ plt.subplot(2,2,3)
 imgplot = plt.imshow(out_res3)
 plt.subplot(2,2,4)
 imgplot = plt.imshow(out_blur3)
+plt.show()
