@@ -145,7 +145,7 @@ print(bpm)
 
 #%%
 ###################################### Plot the selected signal and features
-plt.figure(figsize=(32, 16))
+plt.figure(figsize=(16, 8))
 
 plt.subplot(n_features+1,1,1)
 time_axis = np.arange(audio.shape[0]) / Fs
@@ -185,7 +185,7 @@ plt.plot(feat_time_axis, features[:, 4])
 plt.grid(True);
 
 #See if beats are correct
-plt.figure(figsize=(32, 16))
+plt.figure(figsize=(16, 8))
 plt.plot(t, audio, label="y")
 plt.scatter(t[sample_beats], audio[sample_beats], label="beats", color="red")
 plt.xlim([0, 5])
@@ -203,7 +203,7 @@ for i in range(win_number-1):
     features_s[i+1][a]=smooth_factor*features_s[i+1][a]+(1-smooth_factor)*features_s[i][a]
 features_s.shape
 
-plt.figure(figsize=(32, 16))
+plt.figure(figsize=(16, 8))
 
 plt.subplot(n_features+1,1,1)
 time_axis = np.arange(audio.shape[0]) / Fs
