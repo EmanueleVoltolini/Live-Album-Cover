@@ -15,5 +15,5 @@
 #*.code-workspace
 CPACproject/*
 Live_album_cover/*
-_pycache_/*
+_pycache_/
 data/*
