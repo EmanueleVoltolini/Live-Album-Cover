@@ -6,8 +6,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import cv2
-import keras
-from keras_segmentation.pretrained import pspnet_50_ADE_20K , pspnet_101_cityscapes, pspnet_101_voc12
+import tensorflow.keras
+from keras_segmentation.pretrained  import pspnet_50_ADE_20K , pspnet_101_cityscapes, pspnet_101_voc12
 
 model = pspnet_50_ADE_20K() # load the pretrained model trained on ADE20k dataset
 
@@ -19,10 +19,10 @@ model2 = pspnet_101_voc12() # load the pretrained model trained on Pascal VOC 20
 # The first pre-trained model is the best for our task
 
 out = model.predict_segmentation(
-    inp="image/Ripe.jpg",
+    inp="image_semantic_segmentation/image/Ripe.jpg",
     out_fname="out.png"
 )
-img = mpimg.imread('image/Ripe.jpg')
+img = mpimg.imread('image_semantic_segmentation/image/Ripe.jpg')
 
 plt.figure(figsize=(15,6))
 plt.subplot(1,2,1)
@@ -31,10 +31,10 @@ plt.subplot(1,2,2)
 imgplot = plt.imshow(out)
 
 out2 = model.predict_segmentation(
-    inp="image/Dark_side_of_the_moon.jpg",
+    inp="image_semantic_segmentation/image/Dark_side_of_the_moon.jpg",
     out_fname="out.png"
 )
-img2 = mpimg.imread('image/Dark_side_of_the_moon.jpg')
+img2 = mpimg.imread('image_semantic_segmentation/image/Dark_side_of_the_moon.jpg')
 
 plt.figure(figsize=(15,6))
 plt.subplot(1,2,1)
@@ -43,10 +43,10 @@ plt.subplot(1,2,2)
 imgplot = plt.imshow(out2)
 
 out3 = model.predict_segmentation(
-    inp="image/Nirvana_Nevermind.jpg",
+    inp ="image_semantic_segmentation/image/Nirvana_Nevermind.jpg",
     out_fname="out.png"
 )
-img3 = mpimg.imread('image/Nirvana_Nevermind.jpg')
+img3 = mpimg.imread('image_semantic_segmentation/image/Nirvana_Nevermind.jpg')
 
 plt.figure(figsize=(15,6))
 plt.subplot(1,2,1)
@@ -55,10 +55,10 @@ plt.subplot(1,2,2)
 imgplot = plt.imshow(out3)
 
 out4 = model.predict_segmentation(
-    inp="image/Sonic-Highways.jpg",
+    inp="image_semantic_segmentation/image/Sonic-Highways.jpg",
     out_fname="out.png"
 )
-img4 = mpimg.imread('image/Sonic-Highways.jpg')
+img4 = mpimg.imread('image_semantic_segmentation/image/Sonic-Highways.jpg')
 
 plt.figure(figsize=(15,6))
 plt.subplot(1,2,1)
