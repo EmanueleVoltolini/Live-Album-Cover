@@ -1,5 +1,5 @@
 #.pyre/
-#.vscode/settings.json
+.vscode/settings.json
 #CPACproject/*.cfg
 #CPACproject/Scripts/activate*
 #CPACproject/Scripts/*.ps1
@@ -14,3 +14,5 @@
 #my_workspace.code-workspace
 #*.code-workspace
 CPACproject/*
+_pycache_/*
+data/*
