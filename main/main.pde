@@ -22,12 +22,16 @@ void setup() {
   oscP5 = new OscP5(this,9999);
   remoteLoc = new NetAddress("127.0.0.1", 9999);
   
-  //json = loadJSONObject("data.json");
+  json = loadJSONObject("/../data.json");
+  JSONArray data = json.getJSONArray("data");
+  JSONArray f = data.getJSONArray(0);
+  
+  
   //file = new SoundFile(this, "sample.mp3");
   //file.play();
   
   imgManager = new ImgManager();
-  featureManager = new FeatureManager();
+  featureManager = new FeatureManager(); //<>//
   brushSystem = new BrushSystem();
   
   imageMode(CENTER);
