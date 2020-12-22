@@ -1,8 +1,10 @@
 class ImgManager {
   PImage img_cover;
+  float prevBeat;
   
   ImgManager(){
     img_cover = loadImage("cover2.jpg");
+    prevBeat = 0;
   }
   
   color getCoverPxColor(PVector pos){
@@ -15,14 +17,20 @@ class ImgManager {
     
     image(img_cover, size/2, size/2, size, size);
     
-    long currentTime = System.currentTimeMillis();
-      long timeDiff = currentTime-playedAt;
-      float ind = float(int(timeDiff))/1000.0 / hopsize;
-      
-      int index = round(ind);
-      float rms2 = rms.getFloat(index); //<>//
-      
-      tint(0, 0, rms2);
+    float lastBeat = audioManager.getLastBeatTime();
+    float currentTime = System.currentTimeMillis() - playedAt;
+    float timeDiff = currentTime/1000-lastBeat;
+    
+    float brightness;
+    float k = 1;
+    if(lastBeat != prevBeat){
+      brightness = 0.8;
+      prevBeat = lastBeat;
+    }else{
+      brightness = max(0.8-k*pow(timeDiff, 0.6), 0.3);
+    }
+     //<>//
+    tint(0, 0, brightness);
   }
   
 }

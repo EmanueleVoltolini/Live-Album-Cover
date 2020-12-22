@@ -12,17 +12,7 @@ SoundFile file;
 BrushSystem brushSystem;
 ImgManager imgManager;
 FeatureManager featureManager;
-JSONObject json;
-long playedAt;
-
-JSONArray zcr;
-JSONArray specdec;
-JSONArray speccentr;
-JSONArray rms;
-JSONArray specroll;
-JSONArray beats;
-float hopsize;
-
+AudioManager audioManager;
 
 void setup() {
   size(600, 600);
@@ -31,23 +21,12 @@ void setup() {
   oscP5 = new OscP5(this,9999);
   remoteLoc = new NetAddress("127.0.0.1", 9999);
   
-  json = loadJSONObject("/../data.json");
-  zcr = json.getJSONArray("zcr");
-  specdec = json.getJSONArray("specdec");
-  speccentr = json.getJSONArray("speccentr");
-  rms = json.getJSONArray("rms");
-  specroll = json.getJSONArray("specroll");
-  beats = json.getJSONArray("beats");
-  hopsize = json.getFloat("hopsize_s");
-  
-  
-  //file = new SoundFile(this, "/../data/song.mp3");
-  //file.play();
-  playedAt = System.currentTimeMillis();
+  file = new SoundFile(this, "/../data/song.mp3");
   
   imgManager = new ImgManager();
   featureManager = new FeatureManager();
   brushSystem = new BrushSystem();
+  audioManager = new AudioManager();
   
   imageMode(CENTER);
   noStroke();
@@ -69,6 +48,13 @@ void oscEvent(OscMessage message) {
     float feat = message.get(0).floatValue();
     featureManager.energy = feat;
     return;
+  }
+}
+
+
+void keyPressed() {
+  if (key == ' ') {
+    brushSystem.forcePattern.changePattern();
   }
 }
 

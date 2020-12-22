@@ -2,7 +2,7 @@ class BrushSystem {
 
   ArrayList<Brush> particles;
   PVector origin;
-  int n_brushes = 400;
+  int n_brushes = 200;
   ForcePattern forcePattern;
 
 

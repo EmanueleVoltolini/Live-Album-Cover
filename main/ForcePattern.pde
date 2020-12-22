@@ -15,14 +15,7 @@ class ForcePattern {
     }else if(this.type == ForcePatternType.CIRCLE_LEFT || this.type == ForcePatternType.CIRCLE_RIGHT){
       
       
-      long currentTime = System.currentTimeMillis();
-      long timeDiff = currentTime-playedAt;
-      float ind = timeDiff/1000 / hopsize;
-      
-      int index = round(ind);
-      float zcrCurr = specdec.getFloat(index);
-      
-      float angleRot = zcrCurr;
+      float angleRot = pow(audioManager.getRMS(), 4);
       
       if(this.type == ForcePatternType.CIRCLE_LEFT){
         angleRot = -angleRot;
@@ -39,5 +32,13 @@ class ForcePattern {
     }
     
     return force;
+  }
+  
+  void changePattern(){
+    if(this.type == ForcePatternType.CIRCLE_LEFT){
+      this.type = ForcePatternType.CIRCLE_RIGHT;
+    }else if(this.type == ForcePatternType.CIRCLE_RIGHT){
+      this.type = ForcePatternType.CIRCLE_LEFT;
+    }
   }
 }
