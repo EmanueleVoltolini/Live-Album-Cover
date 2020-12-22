@@ -249,7 +249,7 @@ feat_time_axis = np.arange(features_s.shape[0]) * hop_size / Fs
 plt.title(features_names[4])
 plt.plot(feat_time_axis, features_s[:, 4])
 plt.grid(True);
-plt.show()
+
 
 #%%
 ###################################### Mean, Max, min evaluation
@@ -259,17 +259,26 @@ features_min = np.min(features, 0)
 print(features_mean)
 print(features_Max)
 print(features_min)
+
+print(features_s.shape)
 # %%
 if __name__ == "__main__":
-  parser = argparse.ArgumentParser()
-  parser.add_argument("--ip", default="127.0.0.1",
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--ip", default="127.0.0.1",
       help="The ip of the OSC server")
-  parser.add_argument("--port", type=int, default=5005,
+    parser.add_argument("--port", type=int, default=5005,
       help="The port the OSC server is listening on")
-  args = parser.parse_args()
+    args = parser.parse_args()
+    
+    client = udp_client.SimpleUDPClient(args.ip, args.port)
+    #client.send_message("/Fs", Fs)
+    #client.send_message("/t", t)
 
-  client = udp_client.SimpleUDPClient(args.ip, args.port)
+    for x in range(features_s.shape[1]):
+        client.send_message("/features_s", features_s[:][x])
+    for x in range(sample_beats.shape):
+        client.send_message("/beats", sample_beats[x])
 
-  for x in range(10):
-    client.send_message("/filter", random.random())
-    time.sleep(1)
+#plt.show()
+# %%
