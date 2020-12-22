@@ -5,17 +5,27 @@ OscP5 oscP5;
 NetAddress remoteLoc;
 int size = 600;
 int frameRate = 40;
-
+  
+import processing.sound.*;
+SoundFile file;
 
 BrushSystem brushSystem;
 ImgManager imgManager;
 FeatureManager featureManager;
+JSONObject json;
+
 
 void setup() {
   size(600, 600);
   frameRate(frameRate);
+  
   oscP5 = new OscP5(this,9999);
   remoteLoc = new NetAddress("127.0.0.1", 9999);
+  
+  //json = loadJSONObject("data.json");
+  //file = new SoundFile(this, "sample.mp3");
+  //file.play();
+  
   imgManager = new ImgManager();
   featureManager = new FeatureManager();
   brushSystem = new BrushSystem();
