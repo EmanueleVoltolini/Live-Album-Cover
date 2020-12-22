@@ -24,10 +24,10 @@ class ImgManager {
     float brightness;
     float k = 1;
     if(lastBeat != prevBeat){
-      brightness = 0.8;
+      brightness = 0.7;
       prevBeat = lastBeat;
     }else{
-      brightness = max(0.8-k*pow(timeDiff, 0.6), 0.3);
+      brightness = max(0.7-k*pow(timeDiff, 0.6), 0.4);
     }
      //<>//
     tint(0, 0, brightness);

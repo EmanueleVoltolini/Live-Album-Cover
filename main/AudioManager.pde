@@ -49,7 +49,7 @@ class AudioManager {
   
   float getLastBeatTime(){
     long currentTime = System.currentTimeMillis();
-    long timeDiff = currentTime-playedAt;
+    float timeDiff = currentTime-playedAt;
     
     int i = 0;
     float currBeat;
