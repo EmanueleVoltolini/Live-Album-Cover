@@ -6,11 +6,16 @@ import IPython.display as ipd
 import matplotlib.pyplot as plt
 import os
 
+import json
+import codecs
+
 import argparse
 import random
 import time
 
 from pythonosc import udp_client
+
+
 
 
 import DEF_features
@@ -262,23 +267,30 @@ print(features_min)
 
 print(features_s.shape)
 # %%
-if __name__ == "__main__":
+data=features_s.tolist()
+file_path = "data.json" ## your path variable
+json.dump(data, codecs.open(file_path, 'w', 
+    encoding='utf-8'), separators=(',', ':'), sort_keys=True, indent=4)
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--ip", default="127.0.0.1",
-      help="The ip of the OSC server")
-    parser.add_argument("--port", type=int, default=5005,
-      help="The port the OSC server is listening on")
-    args = parser.parse_args()
-    
-    client = udp_client.SimpleUDPClient(args.ip, args.port)
-    #client.send_message("/Fs", Fs)
-    #client.send_message("/t", t)
 
-    for x in range(features_s.shape[1]):
-        client.send_message("/features_s", features_s[:][x])
-    for x in range(sample_beats.shape):
-        client.send_message("/beats", sample_beats[x])
+# %%
+#if __name__ == "__main__":
+#
+#    parser = argparse.ArgumentParser()
+#    parser.add_argument("--ip", default="127.0.0.1",
+#      help="The ip of the OSC server")
+#    parser.add_argument("--port", type=int, default=5005,
+#      help="The port the OSC server is listening on")
+#    args = parser.parse_args()
+#    
+#    client = udp_client.SimpleUDPClient(args.ip, args.port)
+#    client.send_message("/Fs", Fs)
+#    client.send_message("/t", t)
+#
+#    for x in range(features_s.shape[1]):
+#        client.send_message("/features_s", features_s[:][x])
+#    for x in range(sample_beats.shape):
+#        client.send_message("/beats", sample_beats[x])
 
 #plt.show()
 # %%
