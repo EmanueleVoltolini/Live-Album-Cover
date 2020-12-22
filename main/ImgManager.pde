@@ -14,6 +14,15 @@ class ImgManager {
     //image colors modifications
     
     image(img_cover, size/2, size/2, size, size);
+    
+    long currentTime = System.currentTimeMillis();
+      long timeDiff = currentTime-playedAt;
+      float ind = float(int(timeDiff))/1000.0 / hopsize;
+      
+      int index = round(ind);
+      float rms2 = rms.getFloat(index); //<>//
+      
+      tint(0, 0, rms2);
   }
   
 }

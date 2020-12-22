@@ -14,7 +14,15 @@ class ForcePattern {
       force.y = 1;
     }else if(this.type == ForcePatternType.CIRCLE_LEFT || this.type == ForcePatternType.CIRCLE_RIGHT){
       
-      float angleRot = 0.2*random(0.9, 1.1);
+      
+      long currentTime = System.currentTimeMillis();
+      long timeDiff = currentTime-playedAt;
+      float ind = timeDiff/1000 / hopsize;
+      
+      int index = round(ind);
+      float zcrCurr = specdec.getFloat(index);
+      
+      float angleRot = zcrCurr;
       
       if(this.type == ForcePatternType.CIRCLE_LEFT){
         angleRot = -angleRot;

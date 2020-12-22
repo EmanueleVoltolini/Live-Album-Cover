@@ -13,6 +13,15 @@ BrushSystem brushSystem;
 ImgManager imgManager;
 FeatureManager featureManager;
 JSONObject json;
+long playedAt;
+
+JSONArray zcr;
+JSONArray specdec;
+JSONArray speccentr;
+JSONArray rms;
+JSONArray specroll;
+JSONArray beats;
+float hopsize;
 
 
 void setup() {
@@ -23,15 +32,21 @@ void setup() {
   remoteLoc = new NetAddress("127.0.0.1", 9999);
   
   json = loadJSONObject("/../data.json");
-  JSONArray data = json.getJSONArray("data");
-  JSONArray f = data.getJSONArray(0);
+  zcr = json.getJSONArray("zcr");
+  specdec = json.getJSONArray("specdec");
+  speccentr = json.getJSONArray("speccentr");
+  rms = json.getJSONArray("rms");
+  specroll = json.getJSONArray("specroll");
+  beats = json.getJSONArray("beats");
+  hopsize = json.getFloat("hopsize_s");
   
   
-  //file = new SoundFile(this, "sample.mp3");
+  //file = new SoundFile(this, "/../data/song.mp3");
   //file.play();
+  playedAt = System.currentTimeMillis();
   
   imgManager = new ImgManager();
-  featureManager = new FeatureManager(); //<>//
+  featureManager = new FeatureManager();
   brushSystem = new BrushSystem();
   
   imageMode(CENTER);
@@ -42,7 +57,7 @@ void setup() {
 
 void draw() {
   clear();
-  //imgManager.drawCover();
+  imgManager.drawCover();
   brushSystem.update();
   brushSystem.draw();
 }
