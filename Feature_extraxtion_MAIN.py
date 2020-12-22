@@ -277,7 +277,7 @@ data2= features_s[:, 2].tolist()
 data3= features_s[:, 3].tolist()
 data4= features_s[:, 4].tolist()
 
-sample_beats_s = sample_beats*hop_size/Fs
+sample_beats_s = sample_beats/Fs
 data5 = sample_beats_s.tolist()
 
 file_path = "data.json" ## your path variable
