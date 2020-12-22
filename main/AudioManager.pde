@@ -34,7 +34,7 @@ class AudioManager {
     long timeDiff = currentTime-playedAt;
     float ind = float(int(timeDiff))/1000.0 / hopsize;
     int index = round(ind);
-    float val = zcr.getFloat(index);
+    float val = zcr.getFloat(min(index, zcr.size()-1));
     return val;
   }
   
@@ -43,7 +43,7 @@ class AudioManager {
     long timeDiff = currentTime-playedAt;
     float ind = float(int(timeDiff))/1000.0 / hopsize;
     int index = round(ind);
-    float val = rms.getFloat(index);
+    float val = rms.getFloat(min(index, rms.size()-1));
     return val;
   }
   
@@ -55,7 +55,7 @@ class AudioManager {
     float currBeat;
     while(true){
       currBeat = beats.getFloat(i);
-      if(float(int(timeDiff))/1000 < currBeat){
+      if(float(int(timeDiff))/1000 < currBeat || i >= beats.size()-1){
         break;
       }
       i++;

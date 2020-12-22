@@ -3,7 +3,7 @@ class ImgManager {
   float prevBeat;
   
   ImgManager(){
-    img_cover = loadImage("cover2.jpg");
+    img_cover = loadImage("cover.jpg");
     prevBeat = 0;
   }
   
