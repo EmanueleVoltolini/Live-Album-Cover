@@ -11,7 +11,6 @@ SoundFile file;
 
 BrushSystem brushSystem;
 ImgManager imgManager;
-FeatureManager featureManager;
 AudioManager audioManager;
 
 void setup() {
@@ -24,7 +23,6 @@ void setup() {
   file = new SoundFile(this, "/../data/song.mp3");
   
   imgManager = new ImgManager();
-  featureManager = new FeatureManager();
   brushSystem = new BrushSystem();
   audioManager = new AudioManager();
   
@@ -39,16 +37,6 @@ void draw() {
   imgManager.drawCover();
   brushSystem.update();
   brushSystem.draw();
-}
-
-
-
-void oscEvent(OscMessage message) {
-  if(message.checkAddrPattern("/featureUpdate") == true) {
-    float feat = message.get(0).floatValue();
-    featureManager.energy = feat;
-    return;
-  }
 }
 
 

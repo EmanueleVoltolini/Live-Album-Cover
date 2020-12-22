@@ -2,7 +2,7 @@ class Brush{
 
   float radius;
   PVector pos, vel, acc;
-  float max_vel = 1.9;
+  float max_vel = 9;
   float lifespan;
   float current_lifespan;
   float rand;
@@ -21,6 +21,8 @@ class Brush{
   }
 
   void update(){
+    this.max_vel = map(pow(audioManager.getRMS(), 3), 0, 1, 1, 10) + max(0, (10 - 15*audioManager.getTimeFromLastBeat()));
+
     this.pos_history.add(this.pos.copy());
     this.rand_history.add(random(0,1));
     this.vel.add(this.acc);
@@ -58,11 +60,19 @@ class Brush{
       //color modifications
       
       
-     
+     int n_steps = 3;
+     for(int j = 0; j < n_steps; j++){
       noStroke();
-      fill(col, alpha * (float)i / this.pos_history.size());
-      ellipse(pos.x*(1+(rand-0.5)*0.001), pos.y*(1+(rand-0.5)*0.001), map(mouseX, 0, width, 2, this.radius*10*(1+(rand-0.5)*0.2)), map(mouseY, 0, height, 2, this.radius*10*(1+(rand-0.5)*0.2)));
+      fill(col, alpha * (float)i / this.pos_history.size() * (0.3 + 0.7*pow(audioManager.getRMS(), 4)) * float(j)/n_steps);
       
+      ellipse(
+        pos.x*(1+(rand-0.5)*0.01),
+        pos.y*(1+(rand-0.5)*0.01),
+        map(pow(audioManager.getRMS(),2), 0, 1, 5, this.radius*10*(1+(rand-0.5)*0.2)) * (1-float(j)/n_steps),
+        map(pow(audioManager.getRMS(),2), 0, 1, 5, this.radius*10*(1+(rand-0.5)*0.2)) * (1-float(j)/n_steps)
+      );
+      
+     }
     }
   }
 

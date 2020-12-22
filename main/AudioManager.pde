@@ -49,18 +49,25 @@ class AudioManager {
   
   float getLastBeatTime(){
     long currentTime = System.currentTimeMillis();
-    float timeDiff = currentTime-playedAt;
+    long timeDiff = currentTime-playedAt;
     
     int i = 0;
     float currBeat;
     while(true){
       currBeat = beats.getFloat(i);
-      if(timeDiff/1000 < currBeat){
+      if(float(int(timeDiff))/1000 < currBeat){
         break;
       }
       i++;
     }
-    return currBeat;
+    return beats.getFloat(max(0, i-1));
+  }
+  
+  float getTimeFromLastBeat(){
+    float lastBeat = getLastBeatTime();
+    long currentTime = System.currentTimeMillis() - playedAt;
+    float val = float(int(currentTime))/1000-lastBeat;
+    return val; //<>//
   }
   
 }

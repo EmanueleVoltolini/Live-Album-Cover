@@ -17,19 +17,11 @@ class ImgManager {
     
     image(img_cover, size/2, size/2, size, size);
     
-    float lastBeat = audioManager.getLastBeatTime();
-    float currentTime = System.currentTimeMillis() - playedAt;
-    float timeDiff = currentTime/1000-lastBeat;
+    float timeDiff = audioManager.getTimeFromLastBeat();
     
-    float brightness;
     float k = 1;
-    if(lastBeat != prevBeat){
-      brightness = 0.7;
-      prevBeat = lastBeat;
-    }else{
-      brightness = max(0.7-k*pow(timeDiff, 0.6), 0.4);
-    }
-     //<>//
+    float brightness = max(0.8-k*pow(timeDiff, 0.6), 0.5);
+    
     tint(0, 0, brightness);
   }
   
