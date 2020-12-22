@@ -277,9 +277,9 @@ data2= features_s[:, 2].tolist()
 data3= features_s[:, 3].tolist()
 data4= features_s[:, 4].tolist()
 
-sample_beats_s = sample_beats*hop_size
-data5 = sample_beats.tolist()
-print(sample_beats.shape)
+sample_beats_s = sample_beats*hop_size/Fs
+data5 = sample_beats_s.tolist()
+
 file_path = "data.json" ## your path variable
 json.dump({'zcr': data0, 'specdec': data1, 'speccentr': data2, 'rms': data3, 'specroll': data4, 'hopsize_s': hop_size/Fs, 'beats': data5}, codecs.open(file_path, 'w', 
     encoding='utf-8'), separators=(',', ':'), sort_keys=False, indent=4)
