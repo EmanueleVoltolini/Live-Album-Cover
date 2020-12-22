@@ -258,19 +258,30 @@ plt.grid(True);
 
 #%%
 ###################################### Mean, Max, min evaluation
-features_mean = np.mean(features, 0)
-features_Max= np.max(features, 0)
-features_min = np.min(features, 0)
+features_mean = np.mean(features_s, 0)
+features_Max= np.max(features_s, 0)
+features_min = np.min(features_s, 0)
 print(features_mean)
 print(features_Max)
 print(features_min)
 
 print(features_s.shape)
 # %%
-data= features_s.tolist()
-print(type(data))
+for x in range(features_s.shape[1]):
+    features_s[:, x] = (features_s[:, x]-features_min[x])/(features_Max[x]-features_min[x])
+
+# %%
+data0= features_s[:, 0].tolist()
+data1= features_s[:, 1].tolist()
+data2= features_s[:, 2].tolist()
+data3= features_s[:, 3].tolist()
+data4= features_s[:, 4].tolist()
+
+sample_beats_s = sample_beats*hop_size
+data5 = sample_beats.tolist()
+print(sample_beats.shape)
 file_path = "data.json" ## your path variable
-json.dump({'data': data}, codecs.open(file_path, 'w', 
+json.dump({'zcr': data0, 'specdec': data1, 'speccentr': data2, 'rms': data3, 'specroll': data4, 'hopsize_s': hop_size/Fs, 'beats': data5}, codecs.open(file_path, 'w', 
     encoding='utf-8'), separators=(',', ':'), sort_keys=False, indent=4)
 
 
