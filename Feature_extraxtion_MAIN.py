@@ -267,10 +267,11 @@ print(features_min)
 
 print(features_s.shape)
 # %%
-data=features_s.tolist()
+data= features_s.tolist()
+print(type(data))
 file_path = "data.json" ## your path variable
-json.dump(data, codecs.open(file_path, 'w', 
-    encoding='utf-8'), separators=(',', ':'), sort_keys=True, indent=4)
+json.dump({'data': data}, codecs.open(file_path, 'w', 
+    encoding='utf-8'), separators=(',', ':'), sort_keys=False, indent=4)
 
 
 # %%
