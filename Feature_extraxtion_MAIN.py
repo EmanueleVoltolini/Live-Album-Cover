@@ -108,7 +108,7 @@ def compute_specroll(spec, perc, freq):
 DATA_DIR="data"
 assert os.path.exists(DATA_DIR), "wrong data dir"
 
-filename_in=os.path.join(DATA_DIR, "song.mp3") # put whatever you like
+filename_in=os.path.join(DATA_DIR, "song3.mp3") # put whatever you like
 audio, Fs = librosa.load(filename_in, sr=None)
 
 ipd.Audio(audio, rate=Fs)

@@ -42,10 +42,10 @@ img2 = mpimg.imread('image_semantic_segmentation/image/Dark_side_of_the_moon.jpg
 #imgplot = plt.imshow(out2)
 
 out3 = model.predict_segmentation(
-    inp ="image_semantic_segmentation/image/Nirvana_Nevermind.jpg",
+    inp ="image_semantic_segmentation/image/djesse-vol1.jpg",
     out_fname="image_semantic_segmentation/image/out.png"
 )
-img3 = mpimg.imread('image_semantic_segmentation/image/Nirvana_Nevermind.jpg')
+img3 = mpimg.imread('image_semantic_segmentation/image/djesse-vol1.jpg')
 
 #plt.figure(figsize=(15,6))
 #plt.subplot(1,2,1)
@@ -54,10 +54,10 @@ img3 = mpimg.imread('image_semantic_segmentation/image/Nirvana_Nevermind.jpg')
 #imgplot = plt.imshow(out3)
 
 out4 = model.predict_segmentation(
-    inp="image_semantic_segmentation/image/Sonic-Highways.jpg",
+    inp="image_semantic_segmentation/image/abbey_road.jpg",
     out_fname="image_semantic_segmentation/image/out.png"
 )
-img4 = mpimg.imread('image_semantic_segmentation/image/Sonic-Highways.jpg')
+img4 = mpimg.imread('image_semantic_segmentation/image/abbey_road.jpg')
 
 #plt.figure(figsize=(15,6))
 #plt.subplot(1,2,1)

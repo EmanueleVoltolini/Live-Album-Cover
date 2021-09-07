@@ -3,7 +3,7 @@ class ImgManager {
   float prevBeat;
   
   ImgManager(){
-    img_cover = loadImage("cover.jpg");
+    img_cover = loadImage("Arts_JoyintheWildUnkown.jpg");
     prevBeat = 0;
   }
   
@@ -20,9 +20,9 @@ class ImgManager {
     float timeDiff = audioManager.getTimeFromLastBeat();
     
     float k = 1;
-    float brightness = max(0.8-k*pow(timeDiff, 0.6), 0.5);
+    float brightness = max(0.5-k*pow(timeDiff, 0.8), 0);
     
-    tint(0, 0, brightness);
+    tint(0, brightness, 0.7);
   }
   
 }

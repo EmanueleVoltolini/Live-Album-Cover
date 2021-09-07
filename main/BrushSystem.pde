@@ -2,7 +2,7 @@ class BrushSystem {
 
   ArrayList<Brush> particles;
   PVector origin;
-  int n_brushes = 200;
+  int n_brushes = 500;
   ForcePattern forcePattern;
 
 
@@ -17,8 +17,8 @@ class BrushSystem {
 
   void addParticle() {
     PVector pos = new PVector(random(0, size), random(0, size));
-    float lifespan = random(0.1, 0.6);
-    float radius = random(1, 4);
+    float lifespan = random(0.1, 0.5);
+    float radius = random(1, 7);
     this.particles.add(new Brush(pos, radius, lifespan));
   }
 

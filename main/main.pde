@@ -20,7 +20,7 @@ void setup() {
   oscP5 = new OscP5(this,9999);
   remoteLoc = new NetAddress("127.0.0.1", 9999);
   
-  file = new SoundFile(this, "/../data/song.mp3");
+  file = new SoundFile(this, "/../data/song3.mp3");
   
   imgManager = new ImgManager();
   brushSystem = new BrushSystem();
