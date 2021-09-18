@@ -12,6 +12,7 @@ SoundFile file;
 BrushSystem brushSystem;
 ImgManager imgManager;
 AudioManager audioManager;
+ImgObject imgObject;
 
 void setup() {
   size(600, 600);
@@ -23,8 +24,12 @@ void setup() {
   file = new SoundFile(this, "/../../data/song3.mp3");
   
   imgManager = new ImgManager();
+  imgObject = new ImgObject();
   brushSystem = new BrushSystem();
   audioManager = new AudioManager();
+  
+  imgObject.find_objects();
+  
   
   imageMode(CENTER);
   noStroke();
