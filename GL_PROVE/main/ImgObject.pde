@@ -7,12 +7,13 @@ class ImgObject {
   //color [] colors_arr;
   int a=0;
   int b=0;
+  int nObj=0;
   
   ImgObject(){
     img_obj = loadImage("/../../squares.png");
     img_obj.loadPixels();  
     print(img_obj.width);
-}
+  }
 //  color getCoverPxColor(PVector pos){
 //   return img_obj.get(int(pos.x/size*img_obj.width), int(pos.y/size*img_obj.height));
  // }
@@ -60,17 +61,35 @@ class ImgObject {
      }
     }
     for (int k= this.colors.size()-1; k>=0; k--){
-      this.centroid.set(k, this.centroid.get(k).mult(this.centroid.get(k).mag()/this.count.get(k)));
+      int cx = int (this.centroid.get(k).x);
+      int cy = int (this.centroid.get(k).y);    
+      PVector cxy = new PVector(cx, cy);
+      cxy = cxy.mult(int((cxy.mag()/this.count.get(k)))/cxy.mag());
+      this.centroid.set(k, cxy);
+      //this.centroid.set(k, this.centroid.get(k).mult(this.centroid.get(k).mag()/this.count.get(k)));
       print(k);
     }
+  this.nObj = this.colors.size();
   print(b);
-  //print(this.centroid);
+  print(this.centroid);
   print(this.count);
   //print(colors_arr.length);
   //print(a);
   print(colors.get(0).c);
   }
   
-  
+  void drawCentroids(){
+    for (int k= this.nObj-1; k>=0; k--){
+      noStroke();
+      fill(255, 150, 150);
+      
+      ellipse(
+        this.centroid.get(k).x,
+        this.centroid.get(k).y,
+        5,
+        5
+      );
+    }
+  }
   
 }  

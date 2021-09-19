@@ -13,6 +13,7 @@ BrushSystem brushSystem;
 ImgManager imgManager;
 AudioManager audioManager;
 ImgObject imgObject;
+ObjectList objectList;
 
 void setup() {
   size(600, 600);
@@ -29,7 +30,7 @@ void setup() {
   audioManager = new AudioManager();
   
   imgObject.find_objects();
-  
+  objectList = new ObjectList(imgObject);
   
   imageMode(CENTER);
   noStroke();
@@ -40,14 +41,15 @@ void setup() {
 void draw() {
   clear();
   imgManager.drawCover();
-  brushSystem.update();
-  brushSystem.draw();
+  objectList.draw();
+  //brushSystem.update();
+  //brushSystem.draw();
 }
 
 
 void keyPressed() {
   if (key == ' ') {
-    brushSystem.forcePattern.changePattern();
+    //brushSystem.forcePattern.changePattern();
   }
 }
 

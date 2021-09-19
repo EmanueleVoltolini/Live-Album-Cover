@@ -29,7 +29,7 @@ class ForcePattern {
       
       force = expectedPos.sub(realPos);
     }
-    
+    print(force);
     return force;
   }
   

@@ -33,6 +33,12 @@ class Brush{
     this.acc.mult(0);
   }
   
+  boolean Verify(PVector force, PVector origin){
+    //return (false);
+    imgObject.img_obj.loadPixels();
+    return (imgObject.img_obj.pixels[int(force.y)*imgObject.img_obj.width+int(force.x)] !=(imgObject.img_obj.pixels[int(origin.y)*imgObject.img_obj.width+int(origin.x)]));
+  }
+  
   void applyForce(PVector force){    
     this.acc.add(force);    
   }
