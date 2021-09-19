@@ -28,6 +28,7 @@ class BrushSystemO {
     Brush p;
     for (int i=0; i<this.particles.size(); i++) {
       p=this.particles.get(i);
+      //if(p.pos.x<0||p.pos.y<0){print(p.pos);}
       PVector force = forcePattern.getForce(p.pos.copy(), p.vel.copy(), this.origin.copy());
       if(p.Verify(force, origin)){force=origin;}
       p.applyForce(force);

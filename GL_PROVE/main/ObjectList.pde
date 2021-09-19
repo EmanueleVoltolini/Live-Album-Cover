@@ -19,7 +19,7 @@ class ObjectList{
     for (int p=0; p<this.nObj; p++) {  
       this.systems.get(p).update();
       this.systems.get(p).draw();
-      //this.imgObject.drawCentroids();
+      //imgObject.drawCentroids();
       //print(this.systems.get(p).forcePattern.type);
     }
   }

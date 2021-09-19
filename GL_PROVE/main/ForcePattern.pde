@@ -26,10 +26,11 @@ class ForcePattern {
       
       PVector expectedPos = PVector.add(origin, posOrigin);
       PVector realPos = pos.add(vel);
-      
+      //if(expectedPos.x<0||expectedPos.y<0){print(expectedPos);}
+      //if(pos.x<0||pos.y<0){printos);}
       force = expectedPos.sub(realPos);
     }
-    print(force);
+    //print(force);
     return force;
   }
   
