@@ -3,7 +3,7 @@ class ForcePattern {
   ForcePatternType type;
   
   ForcePattern(){
-    type = ForcePatternType.CIRCLE_LEFT;
+    type = ForcePatternType.ATTRACT;
   }
   
   PVector getForce(PVector pos, PVector vel, PVector origin){
@@ -12,7 +12,19 @@ class ForcePattern {
     if(this.type == ForcePatternType.RADIAL_EXT){
       force.x = 1;
       force.y = 1;
-    }else if(this.type == ForcePatternType.CIRCLE_LEFT || this.type == ForcePatternType.CIRCLE_RIGHT){
+    }
+    else if(this.type == ForcePatternType.ATTRACT){
+      force.x = 1;
+      force.y = 1;
+      PVector posOrigin = PVector.sub(pos, origin);
+      PVector expectedPos = PVector.add(origin, posOrigin);
+      PVector realPos = pos.add(vel);
+      //if(expectedPos.x<0||expectedPos.y<0){print(expectedPos);}
+      //if(pos.x<0||pos.y<0){printos);}
+      force = expectedPos.sub(realPos);
+      force =force.mult(2);
+    }    
+    else if(this.type == ForcePatternType.CIRCLE_LEFT || this.type == ForcePatternType.CIRCLE_RIGHT){
       
       
       float angleRot = 0.5 + pow(audioManager.getRMS(), 4);

@@ -34,9 +34,12 @@ class Brush{
   }
   
   boolean Verify(PVector force, PVector origin){
-    return (false);
+    //return (false);
     //imgObject.img_obj.loadPixels();
-    //return (imgObject.img_obj.pixels[int(force.y)*imgObject.img_obj.width+int(force.x)] !=(imgObject.img_obj.pixels[int(origin.y)*imgObject.img_obj.width+int(origin.x)]));
+    if(!(force.x>size || force.x<0 ||force.y>size || force.y<0)){
+      return (imgObject.img_obj.pixels[int(force.y)*imgObject.img_obj.width+int(force.x)] !=(imgObject.img_obj.pixels[int(origin.y)*imgObject.img_obj.width+int(origin.x)]));
+    }
+    else {return true;}
   }
   
   void applyForce(PVector force){    
@@ -84,5 +87,9 @@ class Brush{
 
   boolean isDead(){
     return this.current_lifespan<=0;
+  }
+  
+  boolean outBoundaries(){
+    return (this.pos.x>size || this.pos.x<0 ||this.pos.y>size || this.pos.y<0);
   }
 }

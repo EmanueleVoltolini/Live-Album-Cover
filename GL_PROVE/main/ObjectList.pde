@@ -9,11 +9,11 @@ class ObjectList{
     centroidList = imgObject.centroid;
     this.systems = new ArrayList<BrushSystemO>();
     for (int p=0; p<this.nObj; p++) {
-      this.addSystemO(centroidList.get(p)); 
+      this.addSystemO(centroidList.get(p), imgObject.count.get(p)); 
     }
   }
-  void addSystemO(PVector p) {
-    this.systems.add(new BrushSystemO(p));
+  void addSystemO(PVector p, int percentage) {
+    this.systems.add(new BrushSystemO(p, percentage));
   }  
   void draw(){
     for (int p=0; p<this.nObj; p++) {  
