@@ -72,7 +72,7 @@ class Brush{
      int n_steps = 3;
      for(int j = 0; j < n_steps; j++){
       noStroke();
-      fill(col, alpha * (float)i / this.pos_history.size() * (0.3 + 0.7*pow(audioManager.getRMS(), 4)) * float(j)/n_steps);
+      fill(col/*-0.01*audioManager.getSpecDec()*/, alpha * (float)i / this.pos_history.size() * (0.3 + 0.7*pow(audioManager.getRMS()/*audioManager.getZCR()*/, 4)) * float(j)/n_steps);
       
       ellipse(
         pos.x*(1+(rand-0.5)*0.01),

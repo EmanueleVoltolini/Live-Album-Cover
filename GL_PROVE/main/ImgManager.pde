@@ -4,6 +4,7 @@ class ImgManager {
   
   ImgManager(){
     img_cover = loadImage("Arts_JoyintheWildUnkown.jpg");
+    //img_cover = loadImage("Nirvana_Nevermind.jpg");
     prevBeat = 0;
   }
   
@@ -22,7 +23,7 @@ class ImgManager {
     float k = 1;
     float brightness = max(0.5-k*pow(timeDiff, 0.8), 0);
     
-    tint(0, brightness, 0.7);
+    tint(0, brightness, 0.4);
   }
   
 }

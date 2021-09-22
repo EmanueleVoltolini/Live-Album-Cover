@@ -10,9 +10,9 @@ class ImgObject {
   int nObj=0;
   
   ImgObject(){
-    img_obj = loadImage("/../../squares.png");
+    img_obj = loadImage("/../../squares2.png");
     img_obj.loadPixels();  
-    print(img_obj.width);
+    //print(img_obj.width);
   }
 //  color getCoverPxColor(PVector pos){
 //   return img_obj.get(int(pos.x/size*img_obj.width), int(pos.y/size*img_obj.height));
@@ -67,15 +67,15 @@ class ImgObject {
       cxy = cxy.mult(int((cxy.mag()/this.count.get(k)))/cxy.mag());
       this.centroid.set(k, cxy);
       //this.centroid.set(k, this.centroid.get(k).mult(this.centroid.get(k).mag()/this.count.get(k)));
-      print(k);
+      //print(k);
     }
   this.nObj = this.colors.size();
-  print(b);
-  print(this.centroid);
+  print(this.nObj);
+  //print(this.centroid);
   print(this.count);
   //print(colors_arr.length);
   //print(a);
-  print(colors.get(0).c);
+  //print(colors.get(0).c);
   }
   
   void drawCentroids(){

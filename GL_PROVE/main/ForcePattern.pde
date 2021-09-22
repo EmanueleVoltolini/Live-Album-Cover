@@ -3,7 +3,7 @@ class ForcePattern {
   ForcePatternType type;
   
   ForcePattern(){
-    type = ForcePatternType.ATTRACT;
+    type = ForcePatternType.RADIAL_INT;
   }
   
   PVector getForce(PVector pos, PVector vel, PVector origin){
@@ -11,6 +11,10 @@ class ForcePattern {
     
     if(this.type == ForcePatternType.RADIAL_EXT){
       force.x = 1;
+      force.y = 1;
+    }
+    else if(this.type == ForcePatternType.RADIAL_INT){
+      force.x = -1;
       force.y = 1;
     }
     else if(this.type == ForcePatternType.ATTRACT){
@@ -22,7 +26,7 @@ class ForcePattern {
       //if(expectedPos.x<0||expectedPos.y<0){print(expectedPos);}
       //if(pos.x<0||pos.y<0){printos);}
       force = expectedPos.sub(realPos);
-      force =force.mult(2);
+      force =force.mult(9);
     }    
     else if(this.type == ForcePatternType.CIRCLE_LEFT || this.type == ForcePatternType.CIRCLE_RIGHT){
       

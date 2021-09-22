@@ -46,6 +46,14 @@ class AudioManager {
     float val = rms.getFloat(min(index, rms.size()-1));
     return val;
   }
+    float getSpecDec(){
+    long currentTime = System.currentTimeMillis();
+    long timeDiff = currentTime-playedAt;
+    float ind = float(int(timeDiff))/1000.0 / hopsize;
+    int index = round(ind);
+    float val = specdec.getFloat(min(index, specdec.size()-1));
+    return val;
+  }
   
   float getLastBeatTime(){
     long currentTime = System.currentTimeMillis();
