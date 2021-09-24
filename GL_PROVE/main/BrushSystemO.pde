@@ -7,8 +7,8 @@ class BrushSystemO {
   PVector centroid;
 
   BrushSystemO(PVector centro, int percentage) {
-    //this.n_brushes=1000*percentage*imgObject.nObj/(size*size);
-    this.n_brushes=1000;
+    this.n_brushes=100*percentage*imgObject.nObj/(size*size);
+    //this.n_brushes=100;
     centroid = centro;
     this.particles = new ArrayList<Brush>();
     this.forcePattern = new ForcePattern();
@@ -28,7 +28,7 @@ class BrushSystemO {
   void addParticle() {
     PVector pos = new PVector(random(0, size), random(0, size));
     //PVector pos = this.centroid;
-    for (int i=0; i<100; i++){
+    for (int i=0; i<50; i++){
       if(imgObject.img_obj.pixels[int(pos.y)*imgObject.img_obj.width+int(pos.x)] !=(imgObject.img_obj.pixels[int(origin.y)*imgObject.img_obj.width+int(origin.x)])){
         pos = new PVector(random(0, size), random(0, size));
       }

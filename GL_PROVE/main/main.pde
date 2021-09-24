@@ -5,7 +5,8 @@ OscP5 oscP5;
 NetAddress remoteLoc;*/
 int size = 600;
 int frameRate = 40;
-  
+
+import processing.opengl.*;
 import processing.sound.*;
 SoundFile file;
 
@@ -16,14 +17,14 @@ ImgObject imgObject;
 ObjectList objectList;
 
 void setup() {
-  size(600, 600);
+  file = new SoundFile(this, "/../../data/song3.mp3");
+  size(600, 600, P2D);
   frameRate(frameRate);
   /*
   oscP5 = new OscP5(this,9999);
   remoteLoc = new NetAddress("127.0.0.1", 9999);
  
  */ 
-  file = new SoundFile(this, "/../../data/song3.mp3");
   
   imgManager = new ImgManager();
   imgObject = new ImgObject();
@@ -37,11 +38,13 @@ void setup() {
   noStroke();
   background(0);
   colorMode(HSB, 1);
+  //imgManager.drawCover();
 }
 
+
 void draw() {
-  clear();
-  imgManager.drawCover();
+  //clear();
+  //imgManager.drawCover();
   objectList.draw();
   //brushSystem.update();
   //brushSystem.draw();
