@@ -59,7 +59,7 @@ void keyPressed() {
 float beat_coloration(){
   float timeDiff = audioManager.getTimeFromLastBeat();
   float t = max(1-pow(timeDiff, 0.8), 0);
-  if (t<500){return t;}
+  if (timeDiff<0.5){return t;}
   else{return 1;}
 }
 
