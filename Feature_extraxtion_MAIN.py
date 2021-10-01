@@ -104,11 +104,12 @@ def compute_specroll(spec, perc, freq):
   return np.nanmin(ind*freq)
 
 #%%
-
+song_name= "The Beatles - Come Together"
+song_name_format=song_name + ".mp3"
 DATA_DIR="data"
 assert os.path.exists(DATA_DIR), "wrong data dir"
 
-filename_in=os.path.join(DATA_DIR, "song3.mp3") # put whatever you like
+filename_in=os.path.join(DATA_DIR, song_name_format) # put whatever you like
 audio, Fs = librosa.load(filename_in, sr=None)
 
 ipd.Audio(audio, rate=Fs)
@@ -280,7 +281,8 @@ data4= features_s[:, 4].tolist()
 sample_beats_s = sample_beats/Fs
 data5 = sample_beats_s.tolist()
 
-file_path = "data.json" ## your path variable
+file_path = song_name+".json" ## your path variable
+file_path=os.path.join(DATA_DIR, file_path)
 json.dump({'zcr': data0, 'specdec': data1, 'speccentr': data2, 'rms': data3, 'specroll': data4, 'hopsize_s': hop_size/Fs, 'beats': data5}, codecs.open(file_path, 'w', 
     encoding='utf-8'), separators=(',', ':'), sort_keys=False, indent=4)
 
