@@ -10,12 +10,12 @@ class ForcePattern {
     PVector force = new PVector();
     
     if(this.type == ForcePatternType.RADIAL_EXT){
-      force.x = 2*audioManager.getRMS();
-      force.y = 2*audioManager.getRMS();
+      force.x = 2*audioManager.getZCR();
+      force.y = 2*audioManager.getZCR();
     }
     else if(this.type == ForcePatternType.RADIAL_INT){
-      force.x = -2*audioManager.getRMS();
-      force.y = 2*audioManager.getRMS();
+      force.x = -2*audioManager.getZCR();
+      force.y = 2*audioManager.getZCR();
     }
     else if(this.type == ForcePatternType.ATTRACT){
       force.x = 1;
@@ -31,7 +31,7 @@ class ForcePattern {
     else if(this.type == ForcePatternType.CIRCLE_LEFT || this.type == ForcePatternType.CIRCLE_RIGHT){
       
       
-      float angleRot = 0.5 + pow(audioManager.getRMS(), 4);
+      float angleRot = 0.5 + pow(audioManager.getZCR(), 4);
       
       if(this.type == ForcePatternType.CIRCLE_LEFT){
         angleRot = -angleRot;
@@ -39,7 +39,7 @@ class ForcePattern {
       PVector posOrigin = PVector.sub(pos, origin);
       posOrigin.rotate(angleRot);
       //posOrigin.mult(0.95);
-      posOrigin.mult(2*audioManager.getRMS());
+      posOrigin.mult(2*audioManager.getZCR());
       
       PVector expectedPos = PVector.add(origin, posOrigin);
       PVector realPos = pos.add(vel);

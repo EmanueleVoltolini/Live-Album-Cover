@@ -28,18 +28,21 @@ class ObjectList{
 int a=0;
 int b=0;
 int c=0;
-boolean d=false;
+boolean d=true;
+boolean f=true;
+
   void draw(){
     if (frameCount%(frameRate*3)==0){
       d=true;
-      
     }
-    if(d||c==0){          //after 3 second change the segments to wich apply the effects
+    
+    if(f||c==0){          //after 3 second change the segments to wich apply the effects
       a = floor(random(0, this.nObj));
       b = floor(random(0, this.nObj));
       rand = int(random(0,3));
       rand1 = int(random(0,3));
       c=1;
+      f=false;
     }
     //rand = 2;
     //rand1=rand;
@@ -69,6 +72,7 @@ boolean d=false;
       //print(this.systems.get(p).forcePattern.type);
       
     }*/
+    if (d){f=true;}
     d=false;
   }
   

@@ -34,7 +34,7 @@ class Painter{
     // Draw stroke's details
     for (int num = strokeThickness; num > 0; num --) {
       float offset = /*random(0,0.2)*/0.3*audioManager.getSpecRoll();
-      color newColor = color(hue(strokeColor)+offset, saturation(strokeColor)+offset, brightness(strokeColor)+offset);
+      color newColor = color(hue(strokeColor)*audioManager.getSpecCent()/*+offset*/, saturation(strokeColor)+offset, brightness(strokeColor)+offset);
       //color newColor = color(hue(strokeColor)+offset, saturation(strokeColor)+offset,  beat_coloration()*brightness(strokeColor)+offset);
       
       stroke(newColor);

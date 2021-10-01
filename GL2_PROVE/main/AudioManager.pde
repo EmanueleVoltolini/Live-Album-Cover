@@ -62,6 +62,15 @@ class AudioManager {
     float val = specroll.getFloat(min(index, specdec.size()-1));
     return val;
   }
+
+    float getSpecCent(){
+    long currentTime = System.currentTimeMillis();
+    long timeDiff = currentTime-playedAt;
+    float ind = float(int(timeDiff))/1000.0 / hopsize;
+    int index = round(ind);
+    float val = speccentr.getFloat(min(index, specdec.size()-1));
+    return val;
+  }  
   
   float getLastBeatTime(){
     long currentTime = System.currentTimeMillis();

@@ -28,11 +28,11 @@ class ParticleSystem{
       int x = int(p.location.x/size*img_sys.width);
       int y = int(p.location.y/size*img_sys.height);
       float plus = random(0,0.15);
-      float hu = hue(img_sys.get(x, y))+plus;
+      float hu = hue(img_sys.get(x, y))*audioManager.getSpecCent()/*+plus*/;
       float sat = saturation(img_sys.get(x, y))+plus;
       //float bri = brightness(img_sys.get(x, y))+plus;
       float bri = beat_coloration()*brightness(img_sys.get(x, y));
-      if(d){bri = brightness(img_sys.get(x, y))+plus;}
+      if(d){bri = brightness(img_sys.get(x, y))+plus; hu = hue(img_sys.get(x, y));}
       color c_im = color(hu*random(0.9,1.1), sat, bri);
       //print(c_im);
 //      if (c_im == color(255,242,0,255)){
