@@ -47,7 +47,7 @@ class Painter{
   
   void painting(color col) {
     resetMatrix();
-    translate(width/2, height/2);
+//    translate(width/2, height/2);
     
     int index = 0;
     
@@ -61,7 +61,7 @@ class Painter{
           pixelColor = color(hue(pixelColor), saturation(pixelColor), brightness(pixelColor));
           if (controlColor == col){
           pushMatrix();
-          translate(x-size/2, y-size/2);
+          translate(x, y);
           rotate(radians(random(-90, 90)));
           
           // Paint by layers from rough strokes to finer details
