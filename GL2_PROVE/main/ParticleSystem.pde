@@ -2,7 +2,7 @@ class ParticleSystem{
   ArrayList<Particle> particles;
   int n_particles;
   PVector origin;
-  PImage img_sys= loadImage("abbey_road.jpg");
+  PImage img_sys= Img;//loadImage(cover_path);
   
   ParticleSystem(PVector centre, int percentage) {
     img_sys.loadPixels();

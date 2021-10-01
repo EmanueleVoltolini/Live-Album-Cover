@@ -1,3 +1,8 @@
+String song_name = "The Beatles - Come Together";
+String song_path = "/../../data/" + song_name + ".mp3";
+String cover_path = "abbey_road.jpg";
+String segmentation_path = "out3.png";
+String audioFeature_path = "/../../data.json";
 
 int size = 600;                                          //Define the size of the display
 int frameRate = 60; //Define the frame-rate
@@ -7,21 +12,19 @@ import processing.opengl.*;                             //Importing the library 
 import processing.sound.*;                             //Importing the library for the audio managment
 SoundFile file;                                        //Create the Soundfile player
 PImage Img;
-//Defining the used class
-ImgManager imgManager;                              
+//Defining the used class                            
 AudioManager audioManager;
 ImgObject imgObject;
 ObjectList objectList;
 int counter = 0;
 
 void setup() {
-  Img =  loadImage("abbey_road.jpg");
-  file = new SoundFile(this, "/../../data/The Beatles - Come Together.mp3");  //Import the song we want 
+  Img =  loadImage(cover_path);
+  file = new SoundFile(this, song_path);  //Import the song we want 
   size(600, 600, P2D);                                  //Define the dimension of the window and the use of GPU rendering
   frameRate(frameRate);
 
   //call the contructurs of our class
-  imgManager = new ImgManager();
   imgObject = new ImgObject();
   audioManager = new AudioManager();
   

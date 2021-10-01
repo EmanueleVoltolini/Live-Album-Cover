@@ -1,9 +1,9 @@
 
 class Painter{
-  String[] imgNames = {"abbey_road.jpg"};
+  String[] imgNames = {cover_path};
   int imgIndex = 0;
-  PImage img =  loadImage(imgNames[imgIndex]);
-  PImage controlImg =  loadImage("out3.png");
+  PImage img =  Img;//loadImage(imgNames[imgIndex]);
+  PImage controlImg =  imgObject.img_obj;//loadImage(segmentation_path);
   
   Painter(){
     this.img.loadPixels();

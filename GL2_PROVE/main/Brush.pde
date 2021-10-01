@@ -55,7 +55,7 @@ class Brush{
     for(int i=this.pos_history.size()-1; i>=0; i--){
       PVector pos = this.pos_history.get(i);
       Float rand = this.rand_history.get(i);
-      color col = imgManager.getCoverPxColor(pos);
+      color col = Img.get(int(pos.x/size*Img.width), int(pos.y/size*Img.height));
       float h = hue(col)*audioManager.getSpecCent();
       float s =saturation(col);
       //float br = brightness(col);

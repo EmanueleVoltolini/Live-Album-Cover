@@ -10,7 +10,7 @@ class ImgObject {
   int nObj=0;
   
   ImgObject(){
-    img_obj = loadImage("out3.png");
+    img_obj = loadImage(segmentation_path);
     img_obj.loadPixels();  
     //print(img_obj.width);
   }

@@ -15,7 +15,7 @@ class AudioManager {
   AudioManager(){
     
       
-    json = loadJSONObject("/../../data.json");
+    json = loadJSONObject(audioFeature_path);
     zcr = json.getJSONArray("zcr");
     specdec = json.getJSONArray("specdec");
     speccentr = json.getJSONArray("speccentr");
