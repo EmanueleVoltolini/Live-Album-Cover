@@ -12,7 +12,6 @@ ImgManager imgManager;
 AudioManager audioManager;
 ImgObject imgObject;
 ObjectList objectList;
-int counter = 0;
 
 void setup() {
   Img =  loadImage("abbey_road.jpg");
@@ -32,15 +31,12 @@ void setup() {
   noStroke();
   background(0);
   colorMode(HSB, 1);
+  image(Img, size/2, size/2, size, size);
   //imgManager.drawCover();
 }
 
 
 void draw() {
-  if(counter==0){
-    image(Img, size/2, size/2, size, size);
-    counter+=1;
-  }
   //clear();
   //imgManager.drawCover();
   objectList.draw();                            
