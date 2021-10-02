@@ -23,7 +23,7 @@ class AudioManager {
     specroll = json.getJSONArray("specroll");
     beats = json.getJSONArray("beats");
     hopsize = json.getFloat("hopsize_s");
-    
+    //print(hopsize);
     file.play();
     playedAt = System.currentTimeMillis();
   }
@@ -93,6 +93,17 @@ class AudioManager {
     long currentTime = System.currentTimeMillis() - playedAt;
     float val = float(int(currentTime))/1000-lastBeat;
     return val; //<>//
+  }
+  
+  float beat_duration(){
+    /*int i;
+    float a;
+    a=0;
+    for (i=0; i<=beats.size()-1; i++){
+      a=a+beats.getFloat(i+1)-beats.getFloat(i);
+    }
+    return a/i;*/
+    return beats.getFloat(1)-beats.getFloat(0);
   }
   
 }

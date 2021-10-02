@@ -30,9 +30,10 @@ int b=0;
 int c=0;
 boolean d=true;
 boolean f=true;
-
+float duration_beat =audioManager.beat_duration();
   void draw(){
-    if (frameCount%(frameRate*3)==0){
+    if(c==0){print("||||"+int(frameRate*4*duration_beat)+"||||");}
+    if (frameCount%int(frameRate*4*duration_beat)==0){
       d=true;
     }
     

@@ -1,8 +1,10 @@
 String song_name = "The Beatles - Come Together";
+
+
 String song_path = "/../../data/" + song_name + ".mp3";
-String cover_path = "abbey_road.jpg";
-String segmentation_path = "out3.png";
-String audioFeature_path = "/../../data.json";
+String cover_path = "/../../data/"+song_name+".jpg";
+String segmentation_path = "/../../data/"+"out3.png";
+String audioFeature_path = "/../../data/"+song_name+".json";
 
 int size = 600;                                          //Define the size of the display
 int frameRate = 60; //Define the frame-rate
