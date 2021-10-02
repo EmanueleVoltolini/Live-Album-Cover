@@ -9,7 +9,7 @@ import cv2
 from keras_segmentation.pretrained  import pspnet_50_ADE_20K , pspnet_101_cityscapes, pspnet_101_voc12
 from pathlib import Path
 
-##################insert here the name of the cover you want to segment###############
+################## insert here the name of the cover you want to segment ###############
 song_name = "The Beatles - Come Together"
 ######################################################################################
 

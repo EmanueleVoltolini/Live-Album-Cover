@@ -15,11 +15,13 @@ import time
 
 from pythonosc import udp_client
 
+################## insert here the name of the cover you want to segment ###############
+song_name = "The Beatles - Come Together"
+######################################################################################
 
 
-
-import DEF_features
-#%%
+import DEF_features as DEF_features
+#%%############## DEFINITION OF FEATURES FUNCTIONS ##########################
 #ZCR
 def compute_zcr(win, Fs):
     win_sign = np.sign(win)
@@ -104,7 +106,7 @@ def compute_specroll(spec, perc, freq):
   return np.nanmin(ind*freq)
 
 #%%
-song_name= "The Beatles - Come Together"
+
 song_name_format=song_name + ".mp3"
 DATA_DIR="data"
 assert os.path.exists(DATA_DIR), "wrong data dir"
