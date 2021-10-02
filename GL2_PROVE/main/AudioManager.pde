@@ -95,15 +95,36 @@ class AudioManager {
     return val; //<>//
   }
   
+  float getBeat(int index){
+    float b;
+    float c;
+    
+    b=beats.getFloat(index);
+    c=beats.getFloat(index+1);
+    b=c-b;
+    return b;
+  }
+  
   float beat_duration(){
-    /*int i;
+    /*int i = 0;
+    float currValue=0;
+    while(true){
+      currValue = currValue+beats.getFloat(i+1)-beats.getFloat(i);
+      if(i >= beats.size()-1){
+        break;
+      }
+      i++;
+    }
+    return currValue/i;*/
+    int i;
     float a;
     a=0;
-    for (i=0; i<=beats.size()-1; i++){
-      a=a+beats.getFloat(i+1)-beats.getFloat(i);
+    for (i=0; i<=beats.size()-4; i++){
+      a=a+getBeat(i);//beats.getFloat(i+1)-beats.getFloat(i);
+      //print(a/i);
     }
-    return a/i;*/
-    return beats.getFloat(1)-beats.getFloat(0);
+    return a/i;
+    //return beats.getFloat(100)-beats.getFloat(99);
   }
   
 }
