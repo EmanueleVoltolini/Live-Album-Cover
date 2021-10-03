@@ -10,8 +10,13 @@ from keras_segmentation.pretrained  import pspnet_50_ADE_20K , pspnet_101_citysc
 from pathlib import Path
 
 ################## insert here the name of the cover you want to segment ###############
-song_name = "The Beatles - Come Together"
+song_name = "muse"
 ######################################################################################
+
+# setting dim of the resize
+height = 600
+width = 600
+dim = (width, height)
 
 extensions = ['jpg','png','jpeg']
 exist_check = False
@@ -35,20 +40,15 @@ for i in range(len(extensions)):
     if my_file.is_file():
         img = mpimg.imread("data/" + song_name + "." + extensions[i])
         exist_check = True
+        res = cv2.resize(img, dim, interpolation=cv2.INTER_LINEAR)
+        mpimg.imsave("data/" + song_name + ".jpg",res)
 if not(exist_check):
     print("The image doesn't exist or the format is not supported")
 else:
     print("Image load :)")
-###################################Preprocessing########################################
 
+####################################### Segmentation ########################################
 
-#######################################Resize########################################
-
-# setting dim of the resize
-height = 600
-width = 600
-dim = (width, height)
-res = cv2.resize(img, dim, interpolation=cv2.INTER_LINEAR)
 
 out_res = model.predict_segmentation(
     inp=res,
@@ -60,7 +60,7 @@ out_res = model.predict_segmentation(
 blur = cv2.GaussianBlur(res, (5, 5), 0)
 out_blur = model.predict_segmentation(
     inp=blur,
-    out_fname="data/" + song_name + ".png"
+    out_fname="data/" + song_name + "_segm.png"
 )
 '''
 ###########################################Different results#######################################
