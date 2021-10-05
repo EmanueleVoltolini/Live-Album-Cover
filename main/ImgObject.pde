@@ -67,6 +67,7 @@ class ImgObject {
   //print(colors_arr.length);
   //print(a);
   //print(colors.get(0).c);
+
   //IntList obj_r= new  IntList (); 
   for (int i=this.nObj-1; i>=0; i--){
     //print("||"+i+"||");

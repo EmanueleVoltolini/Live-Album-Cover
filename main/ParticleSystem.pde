@@ -27,6 +27,7 @@ class ParticleSystem{
       p=this.particles.get(i);
       int x = int(p.location.x/size*img_sys.width);
       int y = int(p.location.y/size*img_sys.height);
+
       float colmus =map(audioManager.getSpecCent(),0,0.4,-0.15,0.15);
       float hu = hue(img_sys.get(x, y))+colmus/**audioManager.getSpecCent()+plus*/;
       float sat = saturation(img_sys.get(x, y))+colmus;
@@ -39,11 +40,13 @@ class ParticleSystem{
 //        red = red(c_im)* random(0.3,1.2);
 //        green = green(c_im)*random(0.3,1.2);
 //        blue = blue(c_im)* random(0.3,1.2);      
+
         p.applyForce(new PVector(random(-1, 1), random(-1,1)));
         //p.applyForce(new PVector(random(-0.4, 0.4), random(0.1,0.8)));
         p.action(c_im);
       //}
       p.lifespan-=15;
+
       noStroke();
       if(p.isDead()){
          particles.remove(i);
