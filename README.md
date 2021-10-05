@@ -66,6 +66,13 @@ String song_name = "savant";
 
 String song_path = "/../../data/" + song_name + ".wav";
 ~~~
+Here it is an examples of the changes in the cover:
+original          |  processed
+:-------------------------:|:-------------------------:
+![](/Readme_images/original1.jpg)  |  ![](/Readme_images/processed.png)
+![](/Readme_images/processed1.jpg)  
+## Tips 
+If you feel particular inspired by the cover changes, click the spacebar to remain in that configuration ;)
 # Who is Live Album Cover
 JL (Jack Long)
 O (Orland)
