@@ -27,23 +27,26 @@ class ParticleSystem{
       p=this.particles.get(i);
       int x = int(p.location.x/size*img_sys.width);
       int y = int(p.location.y/size*img_sys.height);
-      float plus = random(0,0.15);
-      float hu = hue(img_sys.get(x, y))*audioManager.getSpecCent()/*+plus*/;
-      float sat = saturation(img_sys.get(x, y))+plus;
+
+      float colmus =map(audioManager.getSpecCent(),0,0.4,-0.15,0.15);
+      float hu = hue(img_sys.get(x, y))+colmus/**audioManager.getSpecCent()+plus*/;
+      float sat = saturation(img_sys.get(x, y))+colmus;
       //float bri = brightness(img_sys.get(x, y))+plus;
       float bri = beat_coloration()*brightness(img_sys.get(x, y));
-      if(d){bri = brightness(img_sys.get(x, y))+plus; hu = hue(img_sys.get(x, y));}
-      color c_im = color(hu*random(0.9,1.1), sat, bri);
+      //if(d){bri = brightness(img_sys.get(x, y))+plus; hu = hue(img_sys.get(x, y));}
+      color c_im = color(hu, sat, bri);
       //print(c_im);
 //      if (c_im == color(255,242,0,255)){
 //        red = red(c_im)* random(0.3,1.2);
 //        green = green(c_im)*random(0.3,1.2);
 //        blue = blue(c_im)* random(0.3,1.2);      
-        p.applyForce(new PVector(random(-0.2, 0.2), random(-0.2,0.2)));
+
+        p.applyForce(new PVector(random(-1, 1), random(-1,1)));
         //p.applyForce(new PVector(random(-0.4, 0.4), random(0.1,0.8)));
         p.action(c_im);
       //}
-      p.lifespan-=5;
+      p.lifespan-=15;
+
       noStroke();
       if(p.isDead()){
          particles.remove(i);

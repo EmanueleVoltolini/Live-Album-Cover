@@ -7,6 +7,9 @@ class ObjectList{
   int nObj;
   int rand;
   int rand1;
+
+  //float duration_beat;
+
   
   ObjectList(ImgObject imObject){
     imgObject = imObject;
@@ -18,7 +21,16 @@ class ObjectList{
     for (int p=0; p<this.nObj; p++) {
       this.addSystemO(centroidList.get(p), imObject.count.get(p)); 
     }
+
+    /*int i;
+    float aa;
+    aa=0;
+    for (i=0; i<=beats.size()-1; i++){
+      aa=aa+beats.getFloat(i+1)-beats.getFloat(i);
+    }
+    this.duration_beat=aa/i;*/
   }
+  
   void addSystemO(PVector p, int percentage) {
     this.systems.add(new BrushSystemO(p, percentage));
     this.sys.add(new ParticleSystem(p, percentage));
