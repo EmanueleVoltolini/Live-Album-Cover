@@ -1,7 +1,9 @@
-String song_name = "The Beatles - Come Together";
+
+String song_name = "savant";
 
 
-String song_path = "/../../data/" + song_name + ".mp3";
+String song_path = "/../../data/" + song_name + ".wav";
+
 String cover_path = "/../../data/"+song_name+".jpg";
 String segmentation_path = "/../../data/"+song_name+"_segm.png";
 String audioFeature_path = "/../../data/"+song_name+".json";
@@ -38,14 +40,20 @@ void setup() {
   background(0);
   colorMode(HSB, 1);
   //imgManager.drawCover();
-  //image(Img, size/2, size/2, size, size);
+
+  image(Img, size/2, size/2, size, size);
+
 }
 
 
 void draw() {
   //clear();
   //imgManager.drawCover();
-  objectList.draw();                            
+
+  if(frameCount<30){
+  }else{
+    objectList.draw(); 
+  }
   //brushSystem.update();
   //brushSystem.draw();
 }

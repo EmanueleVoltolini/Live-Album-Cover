@@ -67,6 +67,21 @@ class ImgObject {
   //print(colors_arr.length);
   //print(a);
   //print(colors.get(0).c);
+
+  //IntList obj_r= new  IntList (); 
+  for (int i=this.nObj-1; i>=0; i--){
+    //print("||"+i+"||");
+    if (this.count.get(i)<(size*size)/100){
+      //obj_r.append(i);
+      this.count.remove(i);
+      this.colors.remove(i);
+      this.centroid.remove(i);
+      this.nObj--;
+    }
+    //print("||"+i+"||");
+  }
+  
+  print(this.count);
   }
   
   void drawCentroids(){
