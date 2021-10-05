@@ -75,7 +75,7 @@ original          |  processed
 ## Tips 
 If you feel particular inspired by the cover changes, click the spacebar to remain in that configuration ;)
 # Who is Live Album Cover
-JL (Jack Long)
-O (Orland)
-G (Guido - the one who came up with the idea)
+* JL (Jack Long)
+* O (Orland)
+* G (Guido - the one who came up with the idea)
 # Have fun!
