@@ -15,9 +15,9 @@ import time
 
 from pythonosc import udp_client
 
-################## insert here the name of the cover you want to segment ###############
+####### insert here the name of the cover from which you want to extract the features #######
 song_name = "The Beatles - Come Together"
-######################################################################################
+#############################################################################################
 
 
 import DEF_features as DEF_features
