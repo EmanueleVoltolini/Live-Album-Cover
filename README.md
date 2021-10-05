@@ -19,7 +19,7 @@ The code is divided in:
 Fist thing to do is the segmentation of the cover image. In order to do that you need to insert the choosen cover in the ***data*** folder, than you simply insert the name of the file in the ***Imgae_semantic_segm.py*** file: </br>
 ~~~python
 ################## insert here the name of the cover you want to segment #############
-song_name = "muse"
+song_name = "The Beatles - Come Together"
 ######################################################################################
 ~~~
 The segmentation is based on three pretrained model to choose from:
@@ -53,8 +53,9 @@ The features extracted are:
 * Beat (beat tracker)
 * RMS
 * Spectral Roll off
-</br>
-All these features are stored in a _.json_ file that will be loaded in _Processing_ workspace.
+
+
+All these features are stored in a ***.json*** file that will be loaded in ***Processing*** workspace.
 
 ## Processing 
 Processing deals with the graphical effects. </br>
@@ -62,19 +63,19 @@ The main implemented visual effects are based on particle systems, which propert
 For example the dimension of the particles is determined by the RMS, or their colors are controlled by the Spectral Centroid and Spectral Decrease values. </br>
 The only request in order to run properly the code, is to open the ***main.pde*** file and insert the name of the cover you want to animate and the right audio extension of the song file (*.wav* or *.mp3*):
 ~~~java
-String song_name = "savant";
+String song_name = "The Beatles - Come Together";
 
-String song_path = "/../../data/" + song_name + ".wav";
+String song_path = "/../../data/" + song_name + ".mp3";
 ~~~
 Here it is an examples of the changes in the cover:
 original          |  processed
 :-------------------------:|:-------------------------:
-![](/Readme_images/original1.jpg)  |  ![](/Readme_images/processed.png)
+![](/Readme_images/original1.jpg)  |  ![](/Readme_images/processed.jpg)
 ![](/Readme_images/processed1.jpg)  
 ## Tips 
 If you feel particular inspired by the cover changes, click the spacebar to remain in that configuration ;)
 # Who is Live Album Cover
-JL (Jack Long)
-O (Orland)
-G (Guido - the one who came up with the idea)
+* JL (Jack Long)
+* O (Orland)
+* G (Guido - the one who came up with the idea)
 # Have fun!
