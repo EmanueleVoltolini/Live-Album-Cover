@@ -71,7 +71,7 @@ Here it is an examples of the changes in the cover:
 original          |  processed
 :-------------------------:|:-------------------------:
 ![](/Readme_images/original1.jpg)  |  ![](/Readme_images/processed.jpg)
-![](/Readme_images/processed1.jpg)  
+![](/Readme_images/processed1.jpg) |  ![](/Readme_images/beatles.gif)
 ## Tips 
 If you feel particular inspired by the cover changes, click the spacebar to remain in that configuration ;)
 # Who is Live Album Cover
