@@ -32,9 +32,42 @@ model2 = pspnet_101_voc12() # load the pretrained model trained on Pascal VOC 20
 ~~~ 
 These models deal with the segmentation, the results will be not so accurate as it would be necessary to train the network with an album cover dataset.</br>
 Here there are two examples: 
-<p align="left">
-<img src="Readme_images/original1.jpg" width="50%" style="margin-left:200px;">
- </p>
- <p align="right">
-<img src="Readme_images/segm1.png" width="50%" style="margin-left:200px;">
- </p>
+original          |  segmented
+:-------------------------:|:-------------------------:
+![](/Readme_images/original1.jpg)  |  ![](/Readme_images/segmented1.png)
+![](/Readme_images/original2.jpg)  |  ![](/Readme_images/segmented2.png)
+</br>
+As we can see the results vary a lot from one cover to another, this will affect a lot the overall visual effect.
+
+## Features extraction
+First we need to load the choosen song in the ***data*** folder, than as we have done for the Image segmentation we need to insert the name of the file in the ***Feature_extraction.py*** file: </br>
+~~~python
+####### insert here the name of the cover from which you want to extract the features #######
+song_name = "The Beatles - Come Together"
+#############################################################################################
+~~~
+The features extracted are:
+* ZCR (zero crossing rate)
+* Spectral Centroid
+* Spectral Decrease
+* Beat (beat tracker)
+* RMS
+* Spectral Roll off
+</br>
+All these features are stored in a _.json_ file that will be loaded in _Processing_ workspace.
+
+## Processing 
+Processing deals with the graphical effects. </br>
+The main implemented visual effects are based on particle systems, which properties are controlled by the audio extracted features. </br>
+For example the dimension of the particles is determined by the RMS, or their colors are controlled by the Spectral Centroid and Spectral Decrease values. </br>
+The only request in order to run properly the code, is to open the ***main.pde*** file and insert the name of the cover you want to animate and the right audio extension of the song file (*.wav* or *.mp3*):
+~~~java
+String song_name = "savant";
+
+String song_path = "/../../data/" + song_name + ".wav";
+~~~
+# Who is Live Album Cover
+JL (Jack Long)
+O (Orland)
+G (Guido - the one who came up with the idea)
+# Have fun!
