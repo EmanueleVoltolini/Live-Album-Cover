@@ -1,8 +1,8 @@
 
-String song_name = "savant";
+String song_name = "The Beatles - Come Together";
 
 
-String song_path = "/../../data/" + song_name + ".wav";
+String song_path = "/../../data/" + song_name + ".mp3";
 
 String cover_path = "/../../data/"+song_name+".jpg";
 String segmentation_path = "/../../data/"+song_name+"_segm.png";
