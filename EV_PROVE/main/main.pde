@@ -1,7 +1,7 @@
-String song_name = "savant";
+String song_name = "Florida";
 
 
-String song_path = "/../../data/" + song_name + ".wav";
+String song_path = "/../../data/" + song_name + ".mp3";
 String cover_path = "/../../data/"+song_name+".jpg";
 String segmentation_path = "/../../data/"+song_name+"_segm.png";
 String audioFeature_path = "/../../data/"+song_name+".json";
@@ -45,7 +45,7 @@ void setup() {
 void draw() {
   //clear();
   //imgManager.drawCover();
-  if(frameCount<60){
+  if(frameCount<30){
   }else{
     objectList.draw(); 
   }
