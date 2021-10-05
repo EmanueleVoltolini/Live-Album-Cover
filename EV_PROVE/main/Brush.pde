@@ -50,15 +50,17 @@ class Brush{
     return (this.lifespan - this.current_lifespan) / this.lifespan;
   }
   
-  void draw(){
+  void draw(boolean d){
     
     for(int i=this.pos_history.size()-1; i>=0; i--){
       PVector pos = this.pos_history.get(i);
       Float rand = this.rand_history.get(i);
-      color col = imgManager.getCoverPxColor(pos);
-      float h = hue(col);
+      color col = Img.get(int(pos.x/size*Img.width), int(pos.y/size*Img.height));
+      float h = hue(col)*audioManager.getSpecCent();
       float s =saturation(col);
-      float br = brightness(col);
+      //float br = brightness(col);
+      float br = beat_coloration()*brightness(col);
+      if(d){br = brightness(col); h = hue(col);}
       float alpha;
       float percentage = getLifePercent();
       if(percentage > 0.5){

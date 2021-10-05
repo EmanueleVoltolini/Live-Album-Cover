@@ -1,3 +1,10 @@
+String song_name = "savant";
+
+
+String song_path = "/../../data/" + song_name + ".wav";
+String cover_path = "/../../data/"+song_name+".jpg";
+String segmentation_path = "/../../data/"+song_name+"_segm.png";
+String audioFeature_path = "/../../data/"+song_name+".json";
 
 int size = 600;                                          //Define the size of the display
 int frameRate = 60; //Define the frame-rate
@@ -7,20 +14,19 @@ import processing.opengl.*;                             //Importing the library 
 import processing.sound.*;                             //Importing the library for the audio managment
 SoundFile file;                                        //Create the Soundfile player
 PImage Img;
-//Defining the used class
-ImgManager imgManager;                              
+//Defining the used class                            
 AudioManager audioManager;
 ImgObject imgObject;
 ObjectList objectList;
+int counter = 0;
 
 void setup() {
-  Img =  loadImage("abbey_road.jpg");
-  file = new SoundFile(this, "/../../data/The Beatles - Come Together.mp3");  //Import the song we want 
+  Img =  loadImage(cover_path);
+  file = new SoundFile(this, song_path);  //Import the song we want 
   size(600, 600, P2D);                                  //Define the dimension of the window and the use of GPU rendering
   frameRate(frameRate);
 
   //call the contructurs of our class
-  imgManager = new ImgManager();
   imgObject = new ImgObject();
   audioManager = new AudioManager();
   
@@ -31,15 +37,18 @@ void setup() {
   noStroke();
   background(0);
   colorMode(HSB, 1);
-  image(Img, size/2, size/2, size, size);
   //imgManager.drawCover();
+  image(Img, size/2, size/2, size, size);
 }
 
 
 void draw() {
   //clear();
   //imgManager.drawCover();
-  objectList.draw();                            
+  if(frameCount<60){
+  }else{
+    objectList.draw(); 
+  }
   //brushSystem.update();
   //brushSystem.draw();
 }
@@ -55,6 +64,12 @@ void keyPressed() {
   }
 }
 
+float beat_coloration(){
+  float timeDiff = audioManager.getTimeFromLastBeat();
+  float t = max(1-pow(timeDiff, 0.8), 0);
+  if (timeDiff<0.5){return t;}
+  else{return 1;}
+}
 
  enum ForcePatternType {
   ATTRACT,

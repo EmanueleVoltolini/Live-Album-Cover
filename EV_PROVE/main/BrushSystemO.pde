@@ -13,6 +13,7 @@ class BrushSystemO {
     this.particles = new ArrayList<Brush>();
     this.forcePattern = new ForcePattern();
     int fpt = int(random(-0.4, 4.4));
+    //fpt=1;
     print(fpt);
     if(fpt==0){this.forcePattern.type = ForcePatternType.CIRCLE_LEFT;}
     else if(fpt==1) {this.forcePattern.type = ForcePatternType.CIRCLE_RIGHT;}
@@ -52,11 +53,11 @@ class BrushSystemO {
     }
   }
 
-  void draw() { 
+  void draw(boolean d) { 
     Brush p;
     for (int i = this.particles.size() - 1; i >= 0; i--) {
       p=this.particles.get(i);
-      p.draw();
+      p.draw(d);
       p.current_lifespan -= 1.0/frameRate;
       if (p.isDead()||p.outBoundaries()) {
         particles.remove(i);

@@ -32,13 +32,8 @@ class Particle{
     float radius;
     for (int i = 0; i < 3; i = i+1) {
       this.planning(); 
-      fill(c, this.lifespan);
-      noStroke();
-      if(frameCount>1200){
-        radius = map(pow(audioManager.getRMS(),3), 0, 1, 3, this.radius_circle*5*(1+(rand-0.5)*0));
-      }else{
-        radius = map(pow(audioManager.getRMS(),3), 0, 1, 5, this.radius_circle*5*(1+(rand-0.5)*0));
-      }
+      fill(c, this.lifespan); noStroke();
+      radius = map(pow(audioManager.getRMS(),3), 0, 1, 2, this.radius_circle*5*(1+(rand-0.5)*0));
       ellipse(this.location.x, this.location.y, radius*random(0.7,1.3), radius*random(0.7,1.3));
     }
   }
