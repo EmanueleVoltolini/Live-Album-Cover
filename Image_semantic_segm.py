@@ -72,4 +72,3 @@ plt.subplot(2,2,2)
 imgplot = plt.imshow(out_res)
 plt.subplot(2,2,3)
 
-# %%
