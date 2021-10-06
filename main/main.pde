@@ -49,7 +49,6 @@ void setup() {
 void draw() {
   //clear();
   //imgManager.drawCover();
-
   if(frameCount<30){
   }else{
     objectList.draw(); 
