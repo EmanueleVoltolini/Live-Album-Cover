@@ -10,7 +10,7 @@ from keras_segmentation.pretrained  import pspnet_50_ADE_20K , pspnet_101_citysc
 from pathlib import Path
 
 ################## insert here the name of the cover you want to segment ###############
-song_name = "muse"
+song_name = "Florida"
 ######################################################################################
 
 # setting dim of the resize
@@ -71,3 +71,5 @@ imgplot = plt.imshow(img)
 plt.subplot(2,2,2)
 imgplot = plt.imshow(out_res)
 plt.subplot(2,2,3)
+
+# %%

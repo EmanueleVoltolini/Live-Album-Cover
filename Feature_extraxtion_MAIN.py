@@ -16,7 +16,7 @@ import time
 from pythonosc import udp_client
 
 ################## insert here the name of the cover you want to segment ###############
-song_name = "The Beatles - Come Together"
+song_name = "Florida"
 ######################################################################################
 
 
