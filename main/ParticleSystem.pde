@@ -27,6 +27,7 @@ class ParticleSystem{
       p=this.particles.get(i);
       int x = int(p.location.x/size*img_sys.width);
       int y = int(p.location.y/size*img_sys.height);
+      
       float colmus =map(audioManager.getSpecCent(),0,0.4,-0.3,0.3);
       float hu = hue(img_sys.get(x, y))+colmus/**audioManager.getSpecCent()+plus*/;
       float sat = saturation(img_sys.get(x, y))+colmus;
