@@ -7,9 +7,7 @@ class ObjectList{
   int nObj;
   int rand;
   int rand1;
-
   //float duration_beat;
-
   
   ObjectList(ImgObject imObject){
     imgObject = imObject;
@@ -21,7 +19,6 @@ class ObjectList{
     for (int p=0; p<this.nObj; p++) {
       this.addSystemO(centroidList.get(p), imObject.count.get(p)); 
     }
-
     /*int i;
     float aa;
     aa=0;

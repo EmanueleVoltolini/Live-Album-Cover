@@ -95,7 +95,6 @@ class AudioManager {
     return val; //<>//
   }
   
-
   float getBeat(int index){
     float b;
     float c;
