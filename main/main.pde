@@ -38,7 +38,7 @@ void setup() {
   background(0);
   colorMode(HSB, 1);
   //imgManager.drawCover();
-  image(Img, size/2, size/2, size, size);
+  //image(Img, size/2, size/2, size, size);
 }
 
 
